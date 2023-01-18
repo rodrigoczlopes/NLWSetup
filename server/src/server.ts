@@ -1,9 +1,21 @@
 // Back-end API Restful API
 import Fastify from 'fastify';
+import {PrismaClient} from '@prisma/client'
 
-const app = Fastify();
+const app = Fastify()
+const prisma = new PrismaClient();
 
-app.get('/hello', () =>{
+app.get('/hello', () => {
+  const habits = prisma.habit.findMany({
+    where: {
+      title:{
+        startsWith: 'Beber'
+      }
+    }
+  })
+
+
+
   return 'Hello  NLW!'
 })
 
