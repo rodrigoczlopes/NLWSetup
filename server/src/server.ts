@@ -3,8 +3,12 @@ import Fastify from 'fastify';
 
 const app = Fastify();
 
-app.get('/', () =>{
-  return 'Hello  world!'
+app.get('/hello', () =>{
+  return 'Hello  NLW!'
 })
 
-app.listen(3333)
+app.listen({
+  port: 3333,
+}).then(() => {
+  console.log('HTTP Server running!')
+})
